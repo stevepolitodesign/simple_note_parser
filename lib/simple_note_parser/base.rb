@@ -1,5 +1,5 @@
+require "json"
 require "fileutils"
-
 module SimpleNoteParser
   class Base
     attr_accessor :file, :destination
@@ -18,6 +18,10 @@ module SimpleNoteParser
     def load_json_data(path)
       file = File.open path
       json_data = JSON.load file
+    end
+
+    def parse_json_data(json_data)
+      json_data["activeNotes"]
     end
 
     def create_directory(path)
