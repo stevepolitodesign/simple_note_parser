@@ -24,16 +24,25 @@ Or install it yourself as:
 1. Unzip the file.
 1. Open a new terminal window and change directories by navigating into the unzipped directory.
 1. Run `gem install simple_note_parser`
-1. Run `bin/console`. When the prompt opens, run the following:
+1. Run `irb` to start a new Ruby session. Once the prompt starts, run the following:
 
-```ruby
-@notes = SimpleNoteParser.new
+```console
+> require "simple_note_parser"
+=> true
+> @notes = SimpleNoteParser.new
+=> #<SimpleNoteParser:0x00007fef45892768 @file="./source/notes.json", @destination="./organized-by-tag">
 @notes.import
+=> ...
 ```
 
-This will create a directory called `organized-by-tag` in the current directory containing directories based on each note's tag.
+This will create a directory called `organized-by-tag` in the current directory which will contain additional directories based on each note's tag.
 
-1. Optionally run `@notes.import` to recursively remove the `organized-by-tag` directory.
+1. Optionally run `@notes.clean` to recursively remove the `organized-by-tag` directory.
+
+```console
+> @notes.clean
+=> ["./organized-by-tag"]
+```
 
 ## Development
 
