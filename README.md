@@ -20,7 +20,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Export data from [Simplenote](https://simplenote.com/help/#export).
+1. Unzip the file.
+1. Open a new terminal window and change directories by navigating into the unzipped directory.
+1. Run `gem install simple_note_parser`
+1. Run `bin/console`. When the prompt opens, run the following:
+
+```ruby
+@notes = SimpleNoteParser.new
+@notes.import
+```
+
+This will create a directory called `organized-by-tag` in the current directory containing directories based on each note's tag.
+
+1. Optionally run `@notes.import` to recursively remove the `organized-by-tag` directory.
 
 ## Development
 
