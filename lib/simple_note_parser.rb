@@ -4,7 +4,7 @@ require "fileutils"
 class SimpleNoteParser
   attr_accessor :file, :destination
 
-  def initialize(file = "./data/notes.json", destination = "./dist")
+  def initialize(file = "./source/notes.json", destination = "./organized-by-tag")
     @file = file
     @destination = destination
   end
