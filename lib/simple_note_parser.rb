@@ -1,8 +1,7 @@
 require "simple_note_parser/version"
 require "json"
 require "fileutils"
-module SimpleNoteParser
-  class Error < StandardError; end
+class SimpleNoteParser
   attr_accessor :file, :destination
 
   def initialize(file = "./data/notes.json", destination = "./dist")
