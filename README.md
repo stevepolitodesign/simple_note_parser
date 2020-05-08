@@ -31,7 +31,7 @@ Or install it yourself as:
 => true
 > @notes = SimpleNoteParser.new
 => #<SimpleNoteParser:0x00007fef45892768 @file="./source/notes.json", @destination="./organized-by-tag">
-@notes.import
+> @notes.import
 => ...
 ```
 
