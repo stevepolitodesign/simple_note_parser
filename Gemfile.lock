@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    simple_note_parser (0.1.2)
+    simple_note_parser (2.0.0)
 
 GEM
   remote: https://rubygems.org/
