@@ -2,14 +2,14 @@ require "simple_note_parser/base"
 require "csv"
 
 module SimpleNoteParser
-    class Processor < SimpleNoteParser::Base
-      attr_accessor :file, :destination, :headers
+  class Processor < SimpleNoteParser::Base
+    attr_accessor :file, :destination, :headers
 
-      def initialize(file: "./source/notes.json", destination: "./dist/notes.csv", headers: %w[title content tags])
-        @file = file
-        @destination = destination
-        @headers = headers
-      end
+    def initialize(file: "./source/notes.json", destination: "./dist/notes.csv", headers: %w[title content tags])
+      @file = file
+      @destination = destination
+      @headers = headers
+    end
 
     def save_as_csv
       json_data = load_json_data(file)
