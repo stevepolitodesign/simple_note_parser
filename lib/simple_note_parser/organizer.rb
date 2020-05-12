@@ -1,6 +1,13 @@
 require "simple_note_parser/base"
 module SimpleNoteParser
   class Organizer < SimpleNoteParser::Base
+    attr_accessor :file, :destination
+
+    def initialize(file: "./source/notes.json", destination: "./dist/organized-by-tags")
+      @file = file
+      @destination = destination
+    end
+
     def organize_by_tag
       json_data = load_json_data(file)
       notes = parse_json_data(json_data)
