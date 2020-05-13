@@ -8,6 +8,10 @@ class SimpleNoteParser::OrganizerTest < Minitest::Test
         @destination = __dir__ + "/tmp"
     end
 
+    def teardown
+        FileUtils.rm_rf(@destination)
+    end
+
     def test_that_it_can_be_instantiated
         assert @notes
     end
