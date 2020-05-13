@@ -1,0 +1,13 @@
+{
+  "activeNotes": [
+    {
+      "id": "1",
+      "content": "Note 1\r\nNote 1 Content"
+    },
+    {
+      "id": "2",
+      "content": "Note 2\r\nNote 2 Content",
+      "tags": ["Foo", "Bar", "Baz"]
+    }
+  ]
+}
