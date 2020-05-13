@@ -40,4 +40,12 @@ class SimpleNoteParser::OrganizerTest < Minitest::Test
             assert file.read
         end
     end
+
+    def test_that_clean_method_removes_desination
+        @notes = SimpleNoteParser::Organizer.new(file: @file, destination: @destination)
+        @notes.clean
+        assert_raises(Errno::ENOENT) do
+            FileUtils.cd(@destination)
+        end
+    end
 end
