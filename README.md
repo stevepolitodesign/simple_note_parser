@@ -1,6 +1,9 @@
 # SimpleNoteParser
 
-Organizes exported [Simplenote](https://app.simplenote.com/) data into directories based on the note's tag.
+Organizes and parse exported [Simplenote](https://app.simplenote.com/) data.
+
+- Organize notes into directories based on the note's tag.
+- Merge notes into a `csv` file.
 
 ## Installation
 
@@ -23,26 +26,60 @@ Or install it yourself as:
 1. Export data from [Simplenote](https://simplenote.com/help/#export).
 1. Unzip the file.
 1. Open a new terminal window and change directories by navigating into the unzipped directory.
-1. Run `gem install simple_note_parser`
-1. Run `irb` to start a new Ruby session. Once the prompt starts, run the following:
+1. Run `gem install simple_note_parser`.
+1. Run `irb` to start a new Ruby session. Once the prompt starts, run `require "simple_note_parser"`.
 
-```console
-> require "simple_note_parser"
-=> true
-> @notes = SimpleNoteParser.new
-=> #<SimpleNoteParser:0x00007fef45892768 @file="./source/notes.json", @destination="./organized-by-tag">
-> @notes.import
-=> ...
+Once you complete these steps, you can use `SimpleNoteParser::Organizer` or organize notes, or `SimpleNoteParser::Processor` to create a `csv` from the notes.
+
+### SimpleNoteParser::Organizer
+
+Organizes notes into directories based on the note's tag.
+
+```ruby
+SimpleNoteParser::Organizer.new(file: "./source/notes.json", destination: "./dist/organized-by-tags")
 ```
+
+- Requires a `file` value. This is the `JSON` file exported by SimpleNote.
+  - Defaults to `./source/notes.json`.
+- Requires a `destination` value. This is where the directories will be created.
+  - Defaults to `./dist/organized-by-tags`.
+
+#### Usage
 
 This will create a directory called `organized-by-tag` in the current directory which will contain additional directories based on each note's tag.
 
-1. Optionally run `@notes.clean` to recursively remove the `organized-by-tag` directory.
+```console
+> @notes = SimpleNoteParser::Organizer.new
+> @notes.organize_by_tag
+```
+
+Optionally run `@notes.clean` to recursively remove the `organized-by-tag` directory.
+
+### SimpleNoteParser::Processor
+
+Merge notes into a `csv` file.
+
+```ruby
+SimpleNoteParser::Processor.new(file: "./source/notes.json", destination: "./dist", headers: %w[title content tags])
+```
+
+- Requires a `file` value. This is the `JSON` file exported by SimpleNote.
+  - Defaults to `./source/notes.json`.
+- Requires a `destination` value. This is where the `csv` will be created.
+  - Defaults to `./dist`.
+- Requires a `headers` value. This will be used as the header row in the `csv`.
+  - Defaults to `["title", "content", "tags"]`.
+
+#### Usage
+
+This will create a `csv` of notes called `notes.csv` in the destination directory.
 
 ```console
-> @notes.clean
-=> ["./organized-by-tag"]
+> @notes = SimpleNoteParser::Processor.new
+> @notes.save_as_csv
 ```
+
+Optionally run `@notes.clean` to remove the destination directory and `csv`.
 
 ## Development
 

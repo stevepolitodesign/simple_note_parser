@@ -1,3 +1,3 @@
-class SimpleNoteParser
-  VERSION = "0.1.2"
+module SimpleNoteParser
+  VERSION = "2.0.0"
 end
