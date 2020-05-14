@@ -24,6 +24,10 @@ class SimpleNoteParser::ProcessorTest < Minitest::Test
         assert_equal "./dist", @notes.destination
     end
 
+    def test_that_it_has_a_default_header_value
+        assert_equal %w[title content tags], @notes.headers
+    end
+
     def test_that_it_responds_to_save_as_csv
         assert_respond_to @notes, :save_as_csv
     end
