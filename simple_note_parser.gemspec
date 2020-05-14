@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Steve Polito"]
   spec.email         = ["info@stevepolitodesign.com"]
 
-  spec.summary       = %q{Parse notes from Simplenote}
-  spec.description   = %q{Organizes exported Simplenote data into directories based on the note's tag.}
+  spec.summary       = %q{Organizes and parse exported Simplenote data. }
+  spec.description   = %q{Organize notes into directories based on the note's tag. Merge notes into a csv file.}
   spec.homepage      = "https://github.com/stevepolitodesign/simple_note_parser"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
