@@ -5,7 +5,7 @@ module SimpleNoteParser
   class Processor < SimpleNoteParser::Base
     attr_accessor :file, :destination, :headers
 
-    def initialize(file: "./source/notes.json", destination: "./dist/notes.csv", headers: %w[title content tags])
+    def initialize(file: "./source/notes.json", destination: "./dist", headers: %w[title content tags])
       @file = file
       @destination = destination
       @headers = headers
@@ -14,14 +14,19 @@ module SimpleNoteParser
     def save_as_csv
       json_data = load_json_data(file)
       notes = parse_json_data(json_data)
+      create_directory(destination)
       create_csv
       process_notes(notes)
     end
 
     private
 
+    def csv_path
+      destination + "/notes.csv"
+    end
+
     def process_notes(notes)
-      CSV.open(destination, "wb", headers: true) do |csv|
+      CSV.open(csv_path, "wb", headers: true) do |csv|
         csv << headers
         notes.each do |note|
           add_row_to_csv(note, csv)
@@ -38,7 +43,7 @@ module SimpleNoteParser
     end
 
     def create_csv
-      CSV.new(destination, headers: true)
+      CSV.new(csv_path, headers: true)
     end
 
   end
